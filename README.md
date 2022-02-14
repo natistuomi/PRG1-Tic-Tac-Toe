@@ -2,15 +2,16 @@
 
 ## Datastruktur
 
-Jag väljer att använda mig av en lista av listor. Genom
+Jag väljer att använda mig av en lista av listor, spelplan[ ][ ]. Genom
 att göra detta gör jag det enklare för mig med skapandet
 längre fram eftersom jag kan använda mig av ett koordinatsystem 
 vid alla benämningar av specifika rutor. Detta gör i min egen 
-åsikt allting mycket smidigare och lättare att hålla reda på. 
+åsikt allting mycket smidigare och lättare att hålla reda på samt minskar 
+mängden matematik som krävs vid alla kontroller. 
 
 ## Algoritmbeskrivning
 
-Det finns tre sätt att vinna:
+Det finns tre riktningar där man kan vinna:
 * Horisontellt
 * Vertikalt
 * Diagonalt
