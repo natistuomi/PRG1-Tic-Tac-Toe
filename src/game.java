@@ -152,13 +152,13 @@ public class game {
     public static String whoWon(int a){
         String s;
         if(player1Won(a)){
-            s = "Player 1 (X's) won";
+            s = "Spelare 1 (X) vann!";
         }
         else if(player2Won(a)){
-            s = "Player 2 (O's) won";
+            s = "Spelare 2 (O) vann!";
         }
         else{
-            s = "It was a draw";
+            s = "Oavgjort!";
         }
         return s;
     }
