@@ -3,16 +3,14 @@ import java.util.Scanner;
 public class game {
 
     public static void main(String[] args){
-        int A = setA();
-        int winner = playGame(A-1);
+        int boardwidth = setBoardwidth();
+        int winner = playGame(boardwidth-1);
         System.out.println(whoWon(winner));
     }
 
 
 
-
-
-    public static int setA(){
+    public static int setBoardwidth(){
         Scanner tgb = new Scanner(System.in);
         while(true){
             System.out.print("Välj brädstorlek 3, 4 eller 5: ");
@@ -68,8 +66,6 @@ public class game {
         }
         return s;
     }
-
-
 
 
 
@@ -152,8 +148,6 @@ public class game {
 
 
 
-
-
     public static boolean player1Won(int a){
         return a == 1;
     }
@@ -161,8 +155,6 @@ public class game {
     public static boolean player2Won(int a){
         return a == 2;
     }
-
-
 
 
 
