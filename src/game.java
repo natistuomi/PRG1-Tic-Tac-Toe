@@ -30,7 +30,7 @@ public class game {
         }
         for(int i = 0; i < (a+1)*(a+1); i++){
             System.out.println(currentBoard(spelplan, a));
-            int[] koo = pickSquare(a);
+            int[] koo = pickSquare(a, i);
             if(freeSquare(spelplan, koo)){
                 if(player1(i)){
                     spelplan[koo[0]][koo[1]] = 'X';
@@ -51,9 +51,10 @@ public class game {
         return 0;
     }
 
-    public static int[] pickSquare(int a){
+    public static int[] pickSquare(int a, int i){
         Scanner tgb = new Scanner(System.in);
         while(true){
+            System.out.println(whooseTurn(i));
             int[] koordinat = new int[2];
             System.out.print("Vilken rad? 1 - " + (a+1) + ": ");
             koordinat[0] = Integer.parseInt(tgb.nextLine())-1;
@@ -68,6 +69,13 @@ public class game {
                 System.out.println();
             }
         }
+    }
+
+    public static String whooseTurn(int a){
+        if(player1(a)){
+            return "Spelare 1:";
+        }
+        return "Spelare 2:";
     }
 
     public static boolean validCoordinates(int[] koo, int a){
