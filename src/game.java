@@ -32,29 +32,29 @@ public class game {
 
     public static int playGame(int a){
         int currentleader = 0;
-        char[][] spelplan = new char[a+1][a+1];
+        char[][] board = new char[a+1][a+1];
         for(int i = 0; i <= a; i++){
             for(int u = 0; u <= a; u++){
-                spelplan[i][u] = '-';
+                board[i][u] = '-';
             }
         }
         for(int i = 0; i < (a+1)*(a+1); i++){
-            System.out.println(currentBoard(spelplan, a));
+            System.out.println(currentBoard(board, a));
             int[] koo = pickSquare(a, i);
-            if(freeSquare(spelplan, koo)){
+            if(freeSquare(board, koo)){
                 if(player1(i)){
-                    spelplan[koo[0]][koo[1]] = 'X';
+                    board[koo[0]][koo[1]] = 'X';
                 }
                 else{
-                    spelplan[koo[0]][koo[1]] = 'O';
+                    board[koo[0]][koo[1]] = 'O';
                 }
-                currentleader = whoIsWinning(spelplan, a);
+                currentleader = whoIsWinning(board, a);
             }
             else{
                 i -= takenSquare();
             }
             if(currentleader != 0){
-                System.out.println(currentBoard(spelplan, a));
+                System.out.println(currentBoard(board, a));
                 return currentleader;
             }
         }
