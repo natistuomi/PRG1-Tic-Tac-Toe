@@ -8,6 +8,10 @@ public class game {
         System.out.println(whoWon(winner));
     }
 
+
+
+
+
     public static int setA(){
         Scanner tgb = new Scanner(System.in);
         while(true){
@@ -51,6 +55,34 @@ public class game {
         return 0;
     }
 
+    public static String whoWon(int a){
+        String s;
+        if(player1Won(a)){
+            s = "Spelare 1 (X) vann!";
+        }
+        else if(player2Won(a)){
+            s = "Spelare 2 (O) vann!";
+        }
+        else{
+            s = "Oavgjort!";
+        }
+        return s;
+    }
+
+
+
+
+
+    public static String currentBoard(char[][] place, int a){
+        for(int i = 0; i <= a; i++){
+            for(int j = 0; j <= a; j++){
+                System.out.print(place[i][j] + " ");
+            }
+            System.out.println();
+        }
+        return "";
+    }
+
     public static int[] pickSquare(int a, int i){
         Scanner tgb = new Scanner(System.in);
         while(true){
@@ -71,41 +103,14 @@ public class game {
         }
     }
 
-    public static String whooseTurn(int a){
-        if(player1(a)){
-            return "Spelare 1:";
-        }
-        return "Spelare 2:";
-    }
-
-    public static boolean validCoordinates(int[] koo, int a){
-        return koo[0] <= a && koo[0] >= 0 && koo[1] <= a && koo[1] >= 0;
-    }
-
-    public static String currentBoard(char[][] place, int a){
-        for(int i = 0; i <= a; i++){
-            for(int j = 0; j <= a; j++){
-                System.out.print(place[i][j] + " ");
-            }
-            System.out.println();
-        }
-        return "";
-    }
-
     public static boolean freeSquare (char[][] place, int[] koo){
         return place[koo[0]][koo[1]] == '-';
     }
 
-    public static int takenSquare(){
-        System.out.println("Den rutan är upptagen!");
-        System.out.println();
-        return 1;
-    }
-    
     public static boolean player1(int a){
         return a % 2 == 0;
     }
-    
+
     public static int whoIsWinning(char[][] place, int a){
         char[] line = new char[a+1];
         for(int i = 0; i <= a; i++){
@@ -139,6 +144,39 @@ public class game {
         return 0;
     }
 
+    public static int takenSquare(){
+        System.out.println("Den rutan är upptagen!");
+        System.out.println();
+        return 1;
+    }
+
+
+
+
+
+    public static boolean player1Won(int a){
+        return a == 1;
+    }
+
+    public static boolean player2Won(int a){
+        return a == 2;
+    }
+
+
+
+
+
+    public static String whooseTurn(int a){
+        if(player1(a)){
+            return "Spelare 1:";
+        }
+        return "Spelare 2:";
+    }
+
+    public static boolean validCoordinates(int[] koo, int a){
+        return koo[0] <= a && koo[0] >= 0 && koo[1] <= a && koo[1] >= 0;
+    }
+
     public static int correctValue(char[] line){
         if(line[0] == 'X'){
             return 1;
@@ -155,28 +193,6 @@ public class game {
             }
         }
         return true;
-    }
-
-    public static String whoWon(int a){
-        String s;
-        if(player1Won(a)){
-            s = "Spelare 1 (X) vann!";
-        }
-        else if(player2Won(a)){
-            s = "Spelare 2 (O) vann!";
-        }
-        else{
-            s = "Oavgjort!";
-        }
-        return s;
-    }
-
-    public static boolean player1Won(int a){
-        return a == 1;
-    }
-
-    public static boolean player2Won(int a){
-        return a == 2;
     }
 
 }
