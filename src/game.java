@@ -3,9 +3,17 @@ import java.util.Scanner;
 public class game {
 
     public static void main(String[] args){
-        int boardwidth = setBoardwidth();
-        int winner = playGame(boardwidth-1);
-        System.out.println(whoWon(winner));
+        int i = 0;
+        String score = "0 - 0";
+        while( i == 0){
+            int boardwidth = setBoardwidth();
+            int winner = playGame(boardwidth-1);
+            score = makeScore(score, winner);
+            System.out.println("Poängställning: " + score);
+            if(dontPlayAgain()){
+                i = 1;
+            }
+        }
     }
 
 
@@ -53,18 +61,24 @@ public class game {
         return 0;
     }
 
-    public static String whoWon(int a){
-        String s;
+    public static String makeScore(String s, int a){
+        int[] score = new int[2];
+        score[0] = Integer.parseInt(s.substring(0, s.indexOf(' ')));
+        score[1] = Integer.parseInt(s.substring(s.lastIndexOf(' ')+1));
+        System.out.println(whoWon(a));
         if(player1Won(a)){
-            s = "Spelare 1 (X) vann!";
+            score[0] += 1;
         }
         else if(player2Won(a)){
-            s = "Spelare 2 (O) vann!";
+            score[1] += 1;
         }
-        else{
-            s = "Oavgjort!";
-        }
-        return s;
+        return score[0] + " - " + score[1];
+    }
+
+    public static boolean dontPlayAgain(){
+        Scanner tgb = new Scanner(System.in);
+        System.out.print("Spela igen? j/n ");
+        return tgb.nextLine().equals("n");
     }
 
 
@@ -146,14 +160,18 @@ public class game {
         return 1;
     }
 
-
-
-    public static boolean player1Won(int a){
-        return a == 1;
-    }
-
-    public static boolean player2Won(int a){
-        return a == 2;
+    public static String whoWon(int a){
+        String s;
+        if(player1Won(a)){
+            s = "Spelare 1 (X) vann!";
+        }
+        else if(player2Won(a)){
+            s = "Spelare 2 (O) vann!";
+        }
+        else{
+            s = "Oavgjort!";
+        }
+        return s;
     }
 
 
@@ -169,6 +187,15 @@ public class game {
         return koo[0] <= a && koo[0] >= 0 && koo[1] <= a && koo[1] >= 0;
     }
 
+    public static boolean match(char[] line, int a){
+        for(int i = 1; i <= a; i++){
+            if(line[0] != line[i] || line[0] == '-'){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static int correctValue(char[] line){
         if(line[0] == 'X'){
             return 1;
@@ -178,13 +205,12 @@ public class game {
         }
     }
 
-    public static boolean match(char[] line, int a){
-        for(int i = 1; i <= a; i++){
-            if(line[0] != line[i] || line[0] == '-'){
-                return false;
-            }
-        }
-        return true;
+    public static boolean player1Won(int a){
+        return a == 1;
+    }
+
+    public static boolean player2Won(int a){
+        return a == 2;
     }
 
 }
